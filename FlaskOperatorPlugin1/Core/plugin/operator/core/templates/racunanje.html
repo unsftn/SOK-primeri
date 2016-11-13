@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 >Unesite vrednosti za racunanje:</h1>
+    <form method="post" action="{{ url_for('racunanje') }}">
+        <div><input type="text" name="first_number" value="{{ first }}" /></div>
+        <div><input type="text" name="second_number" value="{{ second }}"></div>
+        <div><select name="operator">
+            {% for o in operators %}
+                <option value="{{ o.operator_identifier() }}"
+                   {% if operator == o.operator_identifier() %}
+                        selected
+                   {% endif %}
+                >{{ o.operator_name() }}</option>
+            {% endfor %}
+        </select></div>
+        <div><input type="submit" value="izracunaj"/></div>
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+.link {
+  margin: 5px 5px 5px 5px;
+  float: left;
+}
+.links{
+  background-color: lightblue;
+  float: left;
+  width:100%
+}
+.center{
+
+ clear: left;
+}
+
+.content{
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}

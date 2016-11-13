@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Prepoznati operatori:</h1>
+    {% for operator in operators %}
+    <div><p>{{ operator.operator_identifier() }} {{ operator.operator_name() }}</p></div>
+    {% endfor %}
+{% endblock %}
