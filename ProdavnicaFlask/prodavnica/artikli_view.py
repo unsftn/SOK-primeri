@@ -111,8 +111,8 @@ def unos_artikla(title:Title,artikli:ListaArtikala,prodavnice:ListaProdavnica,li
                                    greska_naziv=greska_naziv,greska_opis=greska_opis,
                                    greska_cena=greska_cena, greska_na_akciji=greska_na_akciji,
                                    greska_kategorije=greska_kategorije,greska_prodavnica=greska_prodavnica,
-                                   oznaka=oznaka,naziv=naziv,opis=opis,
-                                   na_akciji=na_akciji,
+                                   oznaka=oznaka,naziv=naziv,opis=opis,cena=cena,
+                                   na_akciji=na_akciji,stara_oznaka=stara_oznaka,
                                    kategorije=kategorije,prodavnica=prodavnica,
                                    prodavnice=prodavnice, lista_kategorija=lista_kategorija
                                    )
