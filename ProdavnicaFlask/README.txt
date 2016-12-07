@@ -51,7 +51,7 @@ modul napraviti posebnu konfiguraciju tako sto se ode na:
 Run -> Edit configurations
 Napravi se nova Python konfiguracija i za polje
 Script:
-se izabere jedan od tri setup.py modula i za polje
+se izabere setup.py modul i za polje
 Script parameters:
 se upise:
 install

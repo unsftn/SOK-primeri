@@ -1,4 +1,4 @@
-U ovom primeru koristi se flask modul za implementaciju web aplikacije koja cuva evidenciju o prodavnicama.
+U ovom primeru koristi se Django modul za implementaciju web aplikacije koja cuva evidenciju o prodavnicama.
 Za ovaj primer potrebno je imati instaliran pip, setuptools, Django.
 Preporucljivo je instalirati Django u virtuelnom okruzenju sa komandom
 
@@ -80,7 +80,7 @@ Za Windows
 
 NAZIV_OKRUZENJA\Scrpits\python.exe
 
-Ovaj primer se moze pokrenuti iz PyCharm razvojnog okruzenja ali potrebno je za setup.py
+Ovaj primer se moze pokrenuti iz PyCharm razvojnog okruzenja ali potrebno je za manage.py
 modul napraviti posebnu konfiguraciju tako sto se ode na:
 Run -> Edit configurations
 Napravi se nova Python konfiguracija i za polje

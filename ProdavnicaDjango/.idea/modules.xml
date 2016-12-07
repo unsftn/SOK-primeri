@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ProdavnicaDjango.iml" filepath="$PROJECT_DIR$/.idea/ProdavnicaDjango.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Vezbe8.iml" filepath="$PROJECT_DIR$/.idea/Vezbe8.iml" />
     </modules>
   </component>
 </project>
