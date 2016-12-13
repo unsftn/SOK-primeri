@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block head_sadrzaj %}
+<script>
+    function circleClick(el){
+       alert("ID: "+el.id);
+    }
+</script>
+{% endblock %}
+{% block content %}
+<div>
+    <svg width="400" height="300">
+
+    </svg>
+</div>
+<div>
+    <button id="createBtn">Create</button>
+    <button id="enterBtn" >Enter</button>
+    <button id="exitBtn" >Exit</button>
+    <button id="enterBtnTransition" >Enter with transition</button>
+    <button id="exitBtnTransition" >Exit with transition</button>
+    <button id="removeAll" >Remove all</button>
+</div>
+<script>
+    var dataVar=[10,20,30];
+    d3.select('#createBtn').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').data(dataVar).
+          enter().
+          append('circle').
+          attr('cy',100).
+          attr('class',function(d){return 'class'+d;}).
+          attr('id',function(d){return 'circle'+d;}).
+          attr('cx',function(d){return d*2;}).
+          attr('r',function(d,i){return d/10*(i+1);}).
+          attr('fill','green').
+          on('click',function(){
+             circleClick(this);
+          });
+       }
+    );
+    var dataVarEnter=dataVar.slice();
+    dataVarEnter.push(40,50);
+    d3.select('#enterBtn').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').data(dataVarEnter).
+          enter().
+          append('circle').
+          attr('class',function(d){return 'class'+d;}).
+          attr('id',function(d){return 'circle'+d;}).
+          attr('cy',100).
+          attr('cx',function(d){return d*2;}).
+          attr('r',function(d,i){return d/20*(i+1);}).
+          attr('fill','red').
+          on('click',function(){
+             circleClick(this);
+          });
+       }
+    );
+
+    d3.select('#exitBtn').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').data(dataVar).
+          exit().remove();
+       }
+    );
+
+    var dataVarEnterTransition=dataVarEnter.slice();
+    dataVarEnterTransition.push(70,80);
+    //var dataVarEnterTransition=[70,80];
+    d3.select('#enterBtnTransition').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').data(dataVarEnterTransition).
+          enter().
+          append('circle').
+          attr('class',function(d){return 'class'+d;}).
+          attr('id',function(d){return 'circle'+d;}).
+          attr('cy',100).
+          attr('cx',function(d){return d*2;}).
+          attr('fill','blue').
+          attr('r',0).
+          transition().duration(1000).
+          attr('r',function(d,i){return d/20*i;});
+       }
+    );
+
+    d3.select('#exitBtnTransition').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').data(dataVar).
+          exit().
+          transition().duration(700).
+          attr('r',0).remove();
+       }
+    );
+
+    d3.select('#removeAll').on('click',
+       function(){
+          d3.select('svg').selectAll('circle').
+          transition().duration(700).
+          attr('r',0).remove();
+       }
+    );
+
+</script>
+{% endblock %}

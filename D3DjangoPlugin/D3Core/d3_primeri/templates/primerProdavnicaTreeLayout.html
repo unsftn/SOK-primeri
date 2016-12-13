@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block head_sadrzaj %}
+<style>
+
+.node {
+  cursor: pointer;
+  color: #3182bd;
+
+}
+
+.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+</style>
+<script>
+    function nodeClick(el){
+       alert("ID: "+el.id);
+    }
+</script>
+{% endblock %}
+{% block content %}
+<div>
+    <svg width="500" height="500">
+
+    </svg>
+</div>
+<script>
+    var data={name:"Prodavnice",
+    naziv:"Prodavnice",
+    children:[
+    {% for p in prodavnice %}
+       {name:"prodavnica_{{p.id}}",
+        naziv:"{{p.naziv}}"
+       {% if p.artikli.all %}
+       ,children:[
+          {% for a in p.artikli.all %}
+              {name:"artikal_{{a.id}}",
+              naziv:"{{a.naziv}}"
+              {% if a.kategorije.all %}
+                ,children:[
+                        {% for k in a.kategorije.all %}
+                           {name:"kategorija_{{k.id}}",size:"20",
+                            naziv:"{{k.naziv}}"},
+                        {% endfor %}
+                        ]},
+
+              {% endif %}
+
+          {% endfor %}
+        ]
+        {% endif %}
+        }
+        {%if forloop.counter < prodavnice|length %}
+        ,
+        {% endif %}
+    {% endfor %}
+    ]
+    };
+
+
+    var svg=d3.select('svg');
+    // add the links
+
+    var tree=d3.layout.tree().size([400,400]);
+    var nodes=tree.nodes(data);
+    var links=tree.links(nodes);
+
+    //Dodavanje linkova
+    var link = svg.selectAll('.link')
+        .data(links)
+        .enter().append('line')
+        .attr('class', 'link')
+        .attr('x1', function(d) { return d.source.y; })
+        .attr('y1', function(d) { return d.source.x; })
+        .attr('x2', function(d) { return d.target.y; })
+        .attr('y2', function(d) { return d.target.x; });
+
+
+    // Dodavanje cvorova
+    var node = svg.selectAll('.node')
+        .data(nodes) //add
+        .enter().append('g')
+        .attr('class', 'node')
+        .attr('transform', function(d){return "translate("+d.y+","+d.x+")";});
+
+
+    node.append('circle')
+        .attr('r', 10) //radius of circle
+        .attr('fill','blue');
+    node.append('text')
+        .text(function(d){return d.naziv;})
+
+
+</script>
+{% endblock %}

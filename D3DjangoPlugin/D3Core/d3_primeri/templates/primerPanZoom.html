@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<svg width="500" height="500"></svg>
+<script type="text/javascript">
+    var svg = d3.select("svg")
+      .call(d3.behavior.zoom().on("zoom", function () {
+        //console.log(d3.event);
+        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+      }))
+      .append("g");
+
+    svg.append("circle")
+      .attr("cx", 100)
+      .attr("cy", 100)
+      .attr("r", 50)
+      .style("fill", "#B8DEE6");
+  </script>
+{% endblock %}
